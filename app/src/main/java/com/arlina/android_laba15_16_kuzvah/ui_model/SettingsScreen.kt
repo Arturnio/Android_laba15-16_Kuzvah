@@ -10,13 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(onNavigateBack: () -> Unit,
-                   modifier: Modifier = Modifier
+fun SettingsScreen(
+    onNavigateBack: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var notificationsEnabled by remember { mutableStateOf(true) }
     var darkModeEnabled by remember { mutableStateOf(false) }
@@ -39,7 +41,8 @@ fun SettingsScreen(onNavigateBack: () -> Unit,
             modifier = modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Секция "Уведомления"
@@ -69,7 +72,7 @@ fun SettingsScreen(onNavigateBack: () -> Unit,
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     SettingsSwitchItem(
-                        icon = Icons.Default.Lock ,
+                        icon = Icons.Default.Lock,
                         title = "Тёмная тема",
                         description = "Использовать тёмное оформление",
                         checked = darkModeEnabled,

@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +41,8 @@ fun ProfileScreen(
             modifier = modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Card(
@@ -62,12 +65,12 @@ fun ProfileScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Иванов Иван Иванович",
+                        text = "Кузнецов Артур Олегович",
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "Группа: ИСП-234",
+                        text = "Группа: ИСП-233",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
@@ -87,7 +90,7 @@ fun ProfileScreen(
                     ProfileInfoRow(
                         icon = Icons.Default.Email,
                         label = "Email",
-                        value = "ivanov@vgi.volsu.ru"
+                        value = "kuznecov@vgi.volsu.ru"
                     )
                     HorizontalDivider()
                     ProfileInfoRow(
@@ -121,7 +124,7 @@ fun ProfileScreen(
                         )
                         StatisticItem(
                             label = "Дисциплин",
-                            value = "20"
+                            value = "8"
                         )
                     }
                 }
@@ -182,6 +185,7 @@ fun StatisticItem(
             text = label,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
+
         )
     }
 }
